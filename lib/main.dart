@@ -3,41 +3,32 @@ import 'Login.dart';
 import 'Cadastro.dart';
 import 'Loja.dart';
 
-
 void main() {
-
-  runApp(
-      MaterialApp(
-
-        home: Home(),
-        title: 'Kyoto Express',
-        initialRoute: "/Home",
-        routes: {
-          "/Home": (context) => Home(),
-          "/login": (context) => LoginPage(),
-          "/LojaMainPage": (context) => LojaMainPage(),
-        },
-      )
-  );
-
+  runApp(MaterialApp(
+    home: Home(),
+    title: 'Kyoto Express',
+    initialRoute: "/Home",
+    routes: {
+      "/Home": (context) => Home(),
+      "/login": (context) => LoginPage(),
+      "/LojaMainPage": (context) => LojaMainPage(),
+      "/Cadastro": (context) => CadastroPage(),
+    },
+  ));
 }
 
-
 class Home extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Stack(
-
         children: [
           Positioned.fill(
-              child: Image.asset(
-                'assets/images/Kyoto-Express.png',
-                fit: BoxFit.cover,
-              ),
+            child: Image.asset(
+              'assets/images/Kyoto-Express.png',
+              fit: BoxFit.cover,
             ),
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
@@ -55,16 +46,14 @@ class Home extends StatelessWidget {
                       );
                     },
                     child: Text(
-                        'Fazer login',
+                      'Fazer login',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0,
-                          color: Colors.black
-
-                      ),
+                          color: Colors.black),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromRGBO(237,230,221,1),
+                      backgroundColor: Color.fromRGBO(237, 230, 221, 1),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16.0),
                       ),
@@ -77,12 +66,7 @@ class Home extends StatelessWidget {
                   SizedBox(height: 24.0),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => CadastroPage(),
-                        ),
-                      );
+                      Navigator.pushNamed(context, "/Cadastro");
                     },
                     child: Text(
                       'Não possui login?\n Cadastre-se.',
@@ -91,9 +75,7 @@ class Home extends StatelessWidget {
                         color: Colors.white,
                         decoration: TextDecoration.underline,
                         fontSize: 16.0,
-
                       ),
-
                     ),
                   ),
                 ],

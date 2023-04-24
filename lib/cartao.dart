@@ -1,17 +1,5 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Adicionar dados Cartão',
-      home: CartaoScreen(),
-    );
-  }
-}
-
 class CartaoScreen extends StatefulWidget {
   const CartaoScreen({super.key});
 
@@ -22,119 +10,148 @@ class CartaoScreen extends StatefulWidget {
 class _CartaoScreenState extends State<CartaoScreen> {
   // variáveis que armazenarão os dados do cartão
   String numeroCartao = '';
+  String nomeCartao = '';
   String validadeCartao = '';
   String cvvCartao = '';
+  String CPF = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: const Color(0xFFB22124),
-        title: const Text('Dados do cartão'),
-      ),
       body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/confirmacao.jpg'),
-            fit: BoxFit.cover,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/confirmacao.jpg'),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Stack(
+          child: Padding(
+            padding: const EdgeInsets.all(105.0),
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.3),
-                        shape: BoxShape.circle,
+                    Stack(
+                      children: [
+                        Container(
+                          width: 70,
+                          height: 70,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.5),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.person,
+                            color: Colors.white,
+                            size: 50,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 16.0),
+                    // entrada dos dados do cartão
+                    const Text(
+                      'Nome no cartão',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          nomeCartao = value;
+                        });
+                      },
+                      keyboardType: TextInputType.name,
+                    ),
+
+                    const SizedBox(height: 16.0),
+
+                    const Text(
+                      'Número do cartão',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          numeroCartao = value;
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(),
+                    ),
+                    const SizedBox(height: 16.0),
+                    const Text(
+                      'Validade',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          validadeCartao = value;
+                        });
+                      },
+                      keyboardType: TextInputType.datetime,
+                      decoration: const InputDecoration(),
+                    ),
+                    const SizedBox(height: 16.0),
+                    const Text(
+                      'CVV',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          cvvCartao = value;
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                      decoration: const InputDecoration(),
+                    ),
+
+                    const SizedBox(height: 16.0),
+
+                    const Text(
+                      'CPF do usuário',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextField(
+                      onChanged: (value) {
+                        setState(() {
+                          CPF = value;
+                        });
+                      },
+                      keyboardType: TextInputType.number,
+                    ),
+                    const SizedBox(height: 16.0),
+                    // botão para adicionar o cartão
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/LojaMainPage");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.red,
+                        backgroundColor: Colors.white,
                       ),
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                        size: 40,
+                      child: const Text('Adicionar Cartão'),
+                    ),
+                    const SizedBox(height: 16.0),
+                    // botao adicionar cartão depois
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/LojaMainPage");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.red,
+                        backgroundColor: Colors.white,
                       ),
+                      child: const Text('Adicionar cartao depois'),
                     ),
                   ],
                 ),
-                const SizedBox(height: 16.0),
-                // entrada dos dados do cartão
-                const Text(
-                  'Número do cartão',
-                  style: TextStyle(color: Colors.white),
-                ),
-                TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      numeroCartao = value;
-                    });
-                  },
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(),
-                ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  'Validade',
-                  style: TextStyle(color: Colors.white),
-                ),
-                TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      validadeCartao = value;
-                    });
-                  },
-                  keyboardType: TextInputType.datetime,
-                  decoration: const InputDecoration(),
-                ),
-                const SizedBox(height: 16.0),
-                const Text(
-                  'CVV',
-                  style: TextStyle(color: Colors.white),
-                ),
-                TextField(
-                  onChanged: (value) {
-                    setState(() {
-                      cvvCartao = value;
-                    });
-                  },
-                  keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(),
-                ),
-                const SizedBox(height: 16.0),
-                //   botão para adicionar o cartão
-                ElevatedButton(
-                  onPressed: () {
-                    //lógica para adicionar o cartão
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.red,
-                    backgroundColor: Colors.white,
-                  ),
-                  child: const Text('Adicionar Cartão'),
-                ),
-                const SizedBox(height: 16.0),
-                // botao adicionar cartão depois
-                ElevatedButton(
-                  onPressed: () {
-                    // lógica para o adicionar cartão depois
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.red,
-                    backgroundColor: Colors.white,
-                  ),
-                  child: const Text('Adicionar cartao depois'),
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

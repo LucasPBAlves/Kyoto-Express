@@ -1,28 +1,46 @@
 import 'package:flutter/material.dart';
-import 'Login.dart';
-import 'Cadastro.dart';
-import 'Loja.dart';
-import 'verificacao.dart';
-import 'cartao.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'telas/loginpage.dart';
+import 'telas/signinpage.dart';
+import 'telas/homepage.dart';
+import 'telas/cardpage.dart';
+import 'telas/cartpage.dart';
+import 'cartmodel.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Home(),
-    title: 'Kyoto Express',
-    initialRoute: "/Home",
-    routes: {
-      "/Home": (context) => Home(),
-      "/login": (context) => LoginPage(),
-      "/LojaMainPage": (context) => LojaMainPage(),
-      "/Cadastro": (context) => CadastroPage(),
-      "/Verificar": (context) => Verification(),
-      "/Cartao": (context) => CartaoScreen(),
-    },
-  ));
+
+void main() => runApp(MyApp(
+  model: CartModel(),
+));
+
+
+class MyApp extends StatelessWidget{
+
+  final CartModel model;
+
+  const MyApp({Key? key, required this.model}) : super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return ScopedModel<CartModel>(
+      model: model,
+      child:MaterialApp(
+        home: Home(),
+        title: 'Kyoto Express',
+        initialRoute: "/Home",
+        routes: {
+          "/Home": (context) => Home(),
+          "/login": (context) => LoginPage(),
+          "/LojaMainPage": (context) => LojaMainPage(),
+          "/Cadastro": (context) => CadastroPage(),
+          '/Carrinho': (context) => CartPage(),
+        },
+      ));
+  }
 }
 
 class Home extends StatelessWidget {
-  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {

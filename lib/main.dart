@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'Login.dart';
 import 'Cadastro.dart';
 import 'Loja.dart';
+import 'verificacao.dart';
+import 'cartao.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -13,11 +15,15 @@ void main() {
       "/login": (context) => LoginPage(),
       "/LojaMainPage": (context) => LojaMainPage(),
       "/Cadastro": (context) => CadastroPage(),
+      "/Verificar": (context) => Verification(),
+      "/Cartao": (context) => CartaoScreen(),
     },
   ));
 }
 
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

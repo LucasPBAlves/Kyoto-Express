@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget{
           "/LojaMainPage": (context) => LojaMainPage(),
           "/Cadastro": (context) => CadastroPage(),
           '/Carrinho': (context) => CartPage(),
+          "/Verificar": (context) => Verification(),
+          "/Cartao": (context) => CartaoScreen(),
         },
       ));
   }

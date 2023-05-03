@@ -31,7 +31,13 @@ dependencies:
   flutter:
     sdk: flutter
   image_picker: ^0.8.4+4
+  flutter_credit_card: ^3.0.6
+  #google_maps_flutter: ^2.2.5
+  #google_maps_place_picker_mb: ^3.0.1
+  #place_picker: ^0.10.0
   scoped_model: ^2.0.0
+  #map_location_picker: ^1.1.0
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -40,6 +46,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -65,6 +73,9 @@ flutter:
     - assets/images/Cadastro.png
     - assets/images/Login.png
     - assets/images/confirmacao.jpg
+    - assets/images/Menu.png
+    - assets/images/mastercard.png
+    - assets/images/card_bg.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

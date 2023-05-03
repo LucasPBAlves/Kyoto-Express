@@ -4,10 +4,10 @@ class Verification extends StatefulWidget {
   const Verification({super.key});
 
   @override
-  _VerificationPageState createState() => _VerificationPageState();
+  VerificationPageState createState() => VerificationPageState();
 }
 
-class _VerificationPageState extends State<Verification> {
+class VerificationPageState extends State<Verification> {
   String selectedOption = 'Email';
   bool verificou = false;
   final TextEditingController codeController = TextEditingController();

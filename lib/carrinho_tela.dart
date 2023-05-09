@@ -22,8 +22,8 @@ class _CartPageState extends State<CartPage> {
           actions: <Widget>[
             TextButton(
                 child: const Text(
-                  "Clear",
-                  style: TextStyle(color: Colors.grey),
+                  "Esvaziar carrinho",
+                  style: TextStyle(color: Colors.yellow),
                 ),
                 onPressed: () => ScopedModel.of<CartModel>(context).clearCart())
           ],

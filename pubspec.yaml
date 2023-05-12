@@ -79,6 +79,7 @@ flutter:
     - assets/images/Menu.png
     - assets/images/mastercard.png
     - assets/images/card_bg.png
+    - assets/images/Card_Bg(1).png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

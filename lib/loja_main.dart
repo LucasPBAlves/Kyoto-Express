@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'carrinho_model.dart';
-
-
+import 'product_list.dart';
 
 class LojaMainPage extends StatefulWidget {
   const LojaMainPage({super.key});
@@ -16,17 +15,15 @@ class LojaMainPageState extends State<LojaMainPage> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
-
+  get fontSize => 24;
 
   @override
   void initState() {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: const Color(0xFFede6dd),
       key: _scaffoldKey,
@@ -67,18 +64,26 @@ class LojaMainPageState extends State<LojaMainPage> {
 
       //Menu
       drawer: Drawer(
+    child: Container(
+    decoration: const BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage("assets/images/Menu.png"),
+    fit: BoxFit.cover,
+    ),
+    ),
         child: Column(
+
           children: [
             UserAccountsDrawerHeader(
               accountName: const Text('Nome do Usuário'),
               accountEmail: const Text('email@example.com'),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: const Color(0x00202020).withOpacity(0.5),
+                backgroundColor: const Color(0x00202020).withOpacity(0.8),
                 child: const Icon(Icons.person,
                     color: Color(0xFFede6dd), size: 40),
               ),
-              decoration: const BoxDecoration(
-                color: Color(0xFFB22124),
+              decoration: BoxDecoration(
+                color: const Color(0xFFB22124).withOpacity(0.85),
 
                 //border: Border(top: BorderSide.none),
               ),
@@ -191,6 +196,8 @@ class LojaMainPageState extends State<LojaMainPage> {
             ),
           ],
         ),
+    ),
+
       ),
 
       body: SingleChildScrollView(
@@ -376,13 +383,13 @@ class LojaMainPageState extends State<LojaMainPage> {
 
             //Carroussel
             SizedBox(
-              height: 250,
+              height: 300,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _products.length,
+                itemCount: products.length,
                 itemBuilder: (context, index) {
-                  double itemWidth =
-                      MediaQuery.of(context).size.width / 2 - 12; // 2 colunas com 8 de espaçamento
+                  double itemWidth = MediaQuery.of(context).size.width / 2 -
+                      12; // 2 colunas com 8 de espaçamento
                   return Container(
                     width: itemWidth,
                     margin: const EdgeInsets.all(8),
@@ -395,22 +402,33 @@ class LojaMainPageState extends State<LojaMainPage> {
                           color: const Color(0xFBf6f2ee),
                           child: Column(
                             children: <Widget>[
-                              Image.network(
-                                _products[index].imgUrl,
-                                height: 100,
-                                width: 100,
+                              const SizedBox(height: 16),
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                  products[index].imgUrl,
+                                  height: 150,
+                                  width: 150,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
+                              const SizedBox(height: 8),
                               Text(
-                                _products[index].title,
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                products[index].title,
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
-                              Text("R\$${_products[index].price}"),
+                              const SizedBox(height: 8),
+                              Text("R\$${products[index].price}"),
+                              const SizedBox(height: 8),
                               TextButton(
-                                  child: const Text("Comprar"),
-                                  onPressed: () => model.addProduct(_products[index]))
+                                child: const Text("Comprar"),
+                                  onPressed: () => model.addProduct(products[index]
+                              ),
 
-                            ],
                           ),
+                          ]
+                          )
                         );
                       },
                     ),
@@ -421,57 +439,45 @@ class LojaMainPageState extends State<LojaMainPage> {
 
             const SizedBox(height: 25.0),
 
+            //Populares
+            Container(
+              alignment: Alignment.centerLeft,
+              padding: const EdgeInsets.only(left: 20, top: 10),
+              child: const Text(
+                "Populares",
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            )
 
-
+    /*
+    ListView.builder(
+      itemCount: selectedProducts.length,
+      itemBuilder: (BuildContext context, int index) {
+        final product = selectedProducts[index];
+        return ListTile(
+          leading: Image.network(
+            product.imgUrl,
+            height: 80,
+            width: 80,
+            fit: BoxFit.cover,
+          ),
+          title: Text(product.title),
+          subtitle: Text("R\$ ${product.price.toStringAsFixed(2)}"),
+        );
+      },
+    )
+     */
 
             // Coloque aqui o conteúdo da sua página
           ],
         ),
       ),
     );
+
   }
-  final List<Product> _products = [
-    Product(
-        id: 1,
-        title: "Sashimi (5)",
-        price: 25.00,
-        imgUrl:
-            "https://img.icons8.com/external-tulpahn-flat-tulpahn/64/null/external-sashimi-japanese-food-tulpahn-flat-tulpahn.png",
-        qty: 1),
-    Product(
-        id: 2,
-        title: "Nigiri (8)",
-        price: 40.00,
-        imgUrl:
-            "https://img.icons8.com/external-tulpahn-flat-tulpahn/64/null/external-sushi-japanese-food-tulpahn-flat-tulpahn.png",
-        qty: 1),
-    Product(
-        id: 3,
-        title: "Ramen",
-        price: 35.00,
-        imgUrl:
-            "https://img.icons8.com/external-tulpahn-flat-tulpahn/64/null/external-ramen-japanese-food-tulpahn-flat-tulpahn.png",
-        qty: 1),
-    Product(
-        id: 4,
-        title: "Hot Rolls (6)",
-        price: 50.00,
-        imgUrl:
-            "https://img.icons8.com/external-tulpahn-flat-tulpahn/64/null/external-sushi-roll-japanese-food-tulpahn-flat-tulpahn.png",
-        qty: 1),
-    Product(
-        id: 5,
-        title: "Tempura (2)",
-        price: 20.0,
-        imgUrl:
-            "https://img.icons8.com/external-tulpahn-flat-tulpahn/64/null/external-tempura-japanese-food-tulpahn-flat-tulpahn.png",
-        qty: 1),
-    Product(
-        id: 6,
-        title: "Temaki",
-        price: 30.0,
-        imgUrl:
-            "https://img.icons8.com/external-tulpahn-flat-tulpahn/64/null/external-sushi-roll-japanese-food-tulpahn-flat-tulpahn-1.png",
-        qty: 1),
-  ];
+
 }
+

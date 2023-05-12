@@ -14,6 +14,7 @@ class CadastroPageState extends State<CadastroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -122,7 +123,7 @@ class CadastroPageState extends State<CadastroPage> {
                         return null;
                       },
                     ),
-                    const SizedBox(height: 20.0),
+                    const SizedBox(height: 40.0),
                     TextButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {

@@ -70,7 +70,7 @@ class CartaoScreenState extends State<CartaoScreen> {
                 isHolderNameVisible: true,
                 cardBgColor: Colors.white,
                 backgroundImage:
-                    useBackgroundImage ? 'assets/images/card_bg.png' : null,
+                    useBackgroundImage ? 'assets/images/Card_Bg(1).png' : null,
                 isSwipeGestureEnabled: true,
                 onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
                 customCardTypeIcons: <CustomCardTypeIcon>[

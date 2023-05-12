@@ -29,66 +29,66 @@ class _CartPageState extends State<CartPage> {
           ],
         ),
         body: ScopedModel.of<CartModel>(context, rebuildOnChange: true)
-                    .cart.isEmpty
+            .cart.isEmpty
             ? const Center(
-                child: Text("No items in Cart"),
-              )
+          child: Text("No items in Cart"),
+        )
             : Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(children: <Widget>[
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: ScopedModel.of<CartModel>(context,
-                              rebuildOnChange: true)
-                          .total,
-                      itemBuilder: (context, index) {
-                        return ScopedModelDescendant<CartModel>(
-                          builder: (context, child, model) {
-                            return ListTile(
-                              title: Text(model.cart[index].title),
-                              subtitle: Text("${model.cart[index].qty} x ${model.cart[index].price} = ${model.cart[index].qty *
-                                          model.cart[index].price}"),
-                              trailing: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    IconButton(
-                                      icon: const Icon(Icons.add),
-                                      onPressed: () {
-                                        model.updateProduct(model.cart[index],
-                                            model.cart[index].qty + 1);
-                                        // model.removeProduct(model.cart[index]);
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: const Icon(Icons.remove),
-                                      onPressed: () {
-                                        model.updateProduct(model.cart[index],
-                                            model.cart[index].qty - 1);
-                                        // model.removeProduct(model.cart[index]);
-                                      },
-                                    ),
-                                  ]),
-                            );
-                          },
+            padding: const EdgeInsets.all(8.0),
+            child: Column(children: <Widget>[
+              Expanded(
+                child: ListView.builder(
+                  itemCount: ScopedModel.of<CartModel>(context,
+                      rebuildOnChange: true)
+                      .total,
+                  itemBuilder: (context, index) {
+                    return ScopedModelDescendant<CartModel>(
+                      builder: (context, child, model) {
+                        return ListTile(
+                          title: Text(model.cart[index].title),
+                          subtitle: Text("${model.cart[index].qty} x ${model.cart[index].price} = ${model.cart[index].qty *
+                              model.cart[index].price}"),
+                          trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  icon: const Icon(Icons.add),
+                                  onPressed: () {
+                                    model.updateProduct(model.cart[index],
+                                        model.cart[index].qty + 1);
+                                    // model.removeProduct(model.cart[index]);
+                                  },
+                                ),
+                                IconButton(
+                                  icon: const Icon(Icons.remove),
+                                  onPressed: () {
+                                    model.updateProduct(model.cart[index],
+                                        model.cart[index].qty - 1);
+                                    // model.removeProduct(model.cart[index]);
+                                  },
+                                ),
+                              ]),
                         );
                       },
-                    ),
-                  ),
-                  Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Total: R\$ ${ScopedModel.of<CartModel>(context,
-                                    rebuildOnChange: true)
-                                .totalCartValue}",
-                        style: const TextStyle(
-                            fontSize: 24.0, fontWeight: FontWeight.bold),
-                      )),
-                  SizedBox(
-                      width: double.infinity,
-                      child: TextButton(
-                        child: const Text("Finalizar Compra"),
-                        onPressed: () {},
-                      ))
-                ])));
+                    );
+                  },
+                ),
+              ),
+              Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Total: R\$ ${ScopedModel.of<CartModel>(context,
+                        rebuildOnChange: true)
+                        .totalCartValue}",
+                    style: const TextStyle(
+                        fontSize: 24.0, fontWeight: FontWeight.bold),
+                  )),
+              SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    child: const Text("Finalizar Compra"),
+                    onPressed: () {},
+                  ))
+            ])));
   }
 }

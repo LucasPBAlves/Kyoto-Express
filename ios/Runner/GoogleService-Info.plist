@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>820229984222-ek4atdrtlqd93h34qarr1qfo1n70obth.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.820229984222-ek4atdrtlqd93h34qarr1qfo1n70obth</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDIHibjC1X9k6_5ryGcB_JzVqn-kGItfyo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>820229984222</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.kyotoExpress</string>
+	<key>PROJECT_ID</key>
+	<string>kyoto-express</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kyoto-express.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:820229984222:ios:1f77c1ea87aff253f9974f</string>
+</dict>
+</plist>

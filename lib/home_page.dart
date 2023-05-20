@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'login_page.dart';
 import 'cadastro_tela.dart';
 import 'loja_main.dart';
@@ -9,9 +11,15 @@ import 'carrinho_model.dart';
 import 'verificacao_page.dart';
 
 
-void main() => runApp(MyApp(
-  model: CartModel(),
-));
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp(
+    model: CartModel(),
+  ));
+}
 
 
 class MyApp extends StatelessWidget{
